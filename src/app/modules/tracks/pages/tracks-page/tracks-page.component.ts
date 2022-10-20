@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
+import { TrackService } from '@modules/tracks/services/track.service';
+import { Subscription } from 'rxjs';
 import * as dataRaw from '../../../../data/tracks.json'
 
 @Component({
@@ -8,17 +10,25 @@ import * as dataRaw from '../../../../data/tracks.json'
   styleUrls: ['./tracks-page.component.css']
 })
 export class TracksPageComponent implements OnInit {
-mockTracksList: Array<TrackModel> = [
+tracksTrending: Array<TrackModel> = []
+tracksRandom: Array<TrackModel> = []
 
-]
-
-
-
-  constructor() { }
+listObserver$:Array<Subscription> =[]
+  constructor(private trackService: TrackService) { }
 
   ngOnInit(): void {
-    const { data }: any = (dataRaw as any).default
-    this.mockTracksList= data;
+const observer1$ = this.trackService.dataTracksTrending$
+.subscribe((response:any)  => {
+this.tracksTrending = response
+})
+const observer2$ = this.trackService.dataTracksTrending$
+.subscribe(response => {
+
+})
+this.listObserver$ = [observer1$,observer2$]
+  }
+  ngOndestroy(): void{
+this.listObserver$.forEach(u => u.unsubscribe())
   }
 
 }

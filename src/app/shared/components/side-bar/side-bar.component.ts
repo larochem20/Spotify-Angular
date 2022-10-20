@@ -19,7 +19,7 @@ customOptions: Array<any> = []
       {
         name: 'Home',
         icon: 'uil uil-estate',
-        router: ['/']
+        router: ['/','auth']
       },
       {
         name: 'Buscar',
