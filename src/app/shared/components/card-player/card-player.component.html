@@ -1,0 +1,31 @@
+<div *ngIf="mode==='small'" class="card-player player-small">
+    <img [src]="track.cover" [alt]="track.name" class="cover">
+    <div class="content-player">
+        {{track.name}}
+    </div>
+    <div class="buttons-player">
+        <button *ngIf="true" class="play-btn">
+            <i class="uil " [ngClass]="{'uil-play':true}"></i>
+        </button>
+        <button *ngIf="false" class="play-btn">
+            <i class="uil uil-play"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Diseño del mode (big)-->
+<div *ngIf="mode==='big'" class="card-player player-big">
+<img appImgBroken [customImg]="'https://w7.pngwing.com/pngs/1014/365/png-transparent-angular-js-full-logo-tech-companies.png'" [src]='track.cover' alt="" class="cover">
+    <div class="content-player">
+        <div class="title-track">{{track.name}}</div>
+        <div class="sub-title-track">{{track.name}}</div>
+    </div>
+    <div class="buttons-player">
+        <button *ngIf="true" class="play-btn">
+            <i class="uil " [ngClass]="{'uil-play':true}"></i>
+        </button>
+        <button *ngIf="false" class="play-btn">
+            <i class="uil uil-play"></i>
+        </button>
+    </div>
+</div>
