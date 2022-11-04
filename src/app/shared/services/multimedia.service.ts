@@ -95,7 +95,6 @@ export class MultimediaService {
 
 
   public setAudio(track: TrackModel): void {
-    console.log('🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍🐱‍🏍', track);
     this.audio.src = track.url
     this.audio.play()
   }
